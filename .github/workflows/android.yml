@@ -17,24 +17,12 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
 
-    - name: Find and Build Android APK
-      run: |
-        if [ -f ./gradlew ]; then
-          chmod +x ./gradlew
-          ./gradlew assembleDebug
-        elif [ -f ./app/gradlew ]; then
-          cd app
-          chmod +x ./gradlew
-          ./gradlew assembleDebug
-          cd ..
-        else
-          echo "Gradlew file not found in root or app directory, generating gradle wrapper..."
-          gradle wrapper
-          chmod +x ./gradlew
-          ./gradlew assembleDebug
-        fi
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    - name: Build Debug APK with Gradle Direct
+      run: gradle assembleDebug --no-daemon
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
