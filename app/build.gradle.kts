@@ -7,15 +7,14 @@ plugins {
 }
 
 android {
-  // App-oda internal identity
+  // Namespace matrum ApplicationId-ya synchronized format-la set panniruken
   namespace = "com.gyanenderan.edgesync"
-  compileSdk { version = release(36) { minorApiLevel = 1 } }
+  compileSdk = 34
 
   defaultConfig {
-    // Unique Application ID to avoid package conflicts
     applicationId = "com.gyanenderan.edgesync"
     minSdk = 24
-    targetSdk = 36
+    targetSdk = 34
     versionCode = 1
     versionName = "1.0"
 
@@ -60,6 +59,7 @@ android {
   testOptions { unitTests { isIncludeAndroidResources = true } }
 }
 
+// Environment dependencies check match block
 secrets {
   propertiesFileName = ".env"
   defaultPropertiesFileName = ".env.example"

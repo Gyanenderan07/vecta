@@ -24,36 +24,37 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 val navController = rememberNavController()
                 
-                    NavHost(
-                        navController = navController,
-                        startDestination = "login",
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        composable("login") {
-                            LoginScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable("register") {
-                            RegisterScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable("forgot_password") {
-                            ForgotPasswordScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable("permissions_onboarding") {
-                            PermissionsOnboardingScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable("profile") {
-                            ProfileScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable("dashboard") {
-                            DashboardScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable("submit_complaint") {
-                            SubmitComplaintScreen(navController = navController, viewModel = viewModel)
-                        }
-                        composable("cloud_pipeline") {
-                            CloudSyncPipelineScreen(navController = navController, viewModel = viewModel)
-                        }
+                NavHost(
+                    navController = navController,
+                    // Start destination 'login'-la runtime errors check handle aagum
+                    startDestination = "login",
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    composable("login") {
+                        LoginScreen(navController = navController, viewModel = viewModel)
                     }
+                    composable("register") {
+                        RegisterScreen(navController = navController, viewModel = viewModel)
+                    }
+                    composable("forgot_password") {
+                        ForgotPasswordScreen(navController = navController, viewModel = viewModel)
+                    }
+                    composable("permissions_onboarding") {
+                        PermissionsOnboardingScreen(navController = navController, viewModel = viewModel)
+                    }
+                    composable("profile") {
+                        ProfileScreen(navController = navController, viewModel = viewModel)
+                    }
+                    composable("dashboard") {
+                        DashboardScreen(navController = navController, viewModel = viewModel)
+                    }
+                    composable("submit_complaint") {
+                        SubmitComplaintScreen(navController = navController, viewModel = viewModel)
+                    }
+                    composable("cloud_pipeline") {
+                        CloudSyncPipelineScreen(navController = navController, viewModel = viewModel)
+                    }
+                }
             }
         }
     }
