@@ -1,0 +1,6 @@
+{
+  "name": "EdgeSync",
+  "description": "An aesthetic, high-fidelity edge-synchronized infrastructure and grievance tracking hub with real-time analytics, local verification compliance, and precise localization tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
