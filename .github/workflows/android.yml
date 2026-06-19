@@ -19,14 +19,26 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: Grant Execute Permission for Gradlew
-      run: chmod +x gradlew
-
-    - name: Build Debug APK
-      run: ./gradlew assembleDebug
+    - name: Find and Build Android APK
+      run: |
+        if [ -f ./gradlew ]; then
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+        elif [ -f ./app/gradlew ]; then
+          cd app
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+          cd ..
+        else
+          echo "Gradlew file not found in root or app directory, generating gradle wrapper..."
+          gradle wrapper
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+        fi
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: my-ai-app-apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: |
+          **/build/outputs/apk/debug/*.apk
