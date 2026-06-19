@@ -7,14 +7,16 @@ plugins {
 }
 
 android {
-  // Namespace matrum ApplicationId-ya synchronized format-la set panniruken
+  // EdgeSync configuration alignment
   namespace = "com.gyanenderan.edgesync"
+  
+  // Compiler level format syntax-ah ippadi safe-ah maathunga:
   compileSdk = 34
 
   defaultConfig {
     applicationId = "com.gyanenderan.edgesync"
     minSdk = 24
-    targetSdk = 34
+    targetSdk = 34  // Target stable block
     versionCode = 1
     versionName = "1.0"
 
